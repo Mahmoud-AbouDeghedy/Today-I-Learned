@@ -49,6 +49,7 @@ function Fact({ fact, setFacts }) {
 			fact[columnName] += 1;
 			setSelectedButton(columnName);
 		}
+		setIsUpdating(false);
 
 		await supabase
 			.from("facts")
@@ -58,8 +59,6 @@ function Fact({ fact, setFacts }) {
 			})
 			.eq("id", fact.id)
 			.select();
-
-		setIsUpdating(false);
 	}
 
 	async function handleDeleteFact() {
